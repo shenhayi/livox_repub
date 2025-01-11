@@ -1,7 +1,11 @@
 <launch>
+  <!-- 参数设置 -->
+  <param name="global" value="true" />
+  <param name="input_topic" value="/livox/lidar" />
+  <param name="output_topic" value="/pointcloud" />
+  <param name="pose_topic" value="/mavros/local_position/pose" />
 
-  <node pkg="livox_repub" type="livox_repub" name="livox_repub" output="screen" >
-  <remap from="/livox/lidar" to="/livox/lidar" />
+  <node pkg="livox_repub" type="livox_repub" name="livox_repub_node" output="screen">
+    <!-- 如果需要，也可以使用 <rosparam> 或 <param> 嵌套在此处 -->
   </node>
-
 </launch>
