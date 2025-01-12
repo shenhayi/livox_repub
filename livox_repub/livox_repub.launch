@@ -1,11 +1,26 @@
 <launch>
-  <!-- 参数设置 -->
-  <param name="global" value="true" />
-  <param name="input_topic" value="/livox/lidar" />
-  <param name="output_topic" value="/pointcloud" />
-  <param name="pose_topic" value="/mavros/local_position/pose" />
+  <!-- 
+    如果你需要给节点传递一些参数，也可以在此通过 param 或者 rosparam。
+    比如是否合并多帧、输入/输出话题等都可以。
+    这里给一个简单示例，不额外传参，直接启动节点。
+  -->
 
-  <node pkg="livox_repub" type="livox_repub" name="livox_repub_node" output="screen">
-    <!-- 如果需要，也可以使用 <rosparam> 或 <param> 嵌套在此处 -->
+  <!-- 启动节点 -->
+  <node pkg="livox_repub"
+        type="livox_repub"
+        name="livox_repub"
+        output="screen">
+    
+    <!-- 例如，如果在代码里有 NodeHandle("~").param("merge_count", TO_MERGE_CNT, (uint64_t)1); 
+         你可以在这里写:
+         <param name="merge_count" value="1" />
+         这样就能让节点在启动时读取该参数 -->
+    
+    <!-- 也可以做一些话题的重映射 (remap)，比如：
+    <remap from="/livox/lidar" to="/my_lidar_topic" />
+    <remap from="/livox_pcl0"  to="/my_output_pointcloud" />
+    <remap from="/mavros/local_position/pose" to="/other_pose_topic" />
+    -->
+
   </node>
 </launch>
