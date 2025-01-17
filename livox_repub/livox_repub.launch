@@ -1,7 +1,6 @@
 <launch>
   <node pkg="livox_repub" type="livox_repub" name="livox_repub" output="screen">
-    <!-- 下面这些 param 都会被放进节点“私有命名空间” -->
-    <param name="global" value="true" />
+    <param name="global" value="false" />
     <param name="input_pointcloud_topic" value="/livox/lidar" />
     <param name="input_pose_topic" value="/mavros/local_position/pose" />
     <param name="output_pointcloud_topic" value="/pointcloud" />
